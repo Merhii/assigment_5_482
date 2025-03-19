@@ -53,8 +53,8 @@ def scrape_ebay_data():
         product_items = WebDriverWait(driver, 15).until(
             EC.presence_of_all_elements_located((By.CSS_SELECTOR, ".dne-itemtile"))
         )
-    except Exception as e:
-        print(f"Error locating product items: {e}")
+    except :
+        print(f"Error locating product items:")
         product_items = []
     for item in product_items:
 
@@ -88,8 +88,8 @@ def scrape_ebay_data():
                 "item_url": url,
             }
             all_data.append(ebay_data)
-        except Exception as e:
-            print("Error occurred:", e)
+        except :
+            print("Error occurred:")
             return None
     return all_data
 
