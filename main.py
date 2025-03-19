@@ -95,7 +95,7 @@ def scrape_ebay_data():
 
 
 def save_to_csv(data_list):
-    file_name = "ebay_deals.csv"
+    file_name = "ebay_tech_deals.csv"
     try:
         df = pd.read_csv(file_name)
     except FileNotFoundError:
