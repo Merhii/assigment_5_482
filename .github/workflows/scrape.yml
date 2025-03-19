@@ -30,5 +30,5 @@ jobs:
           git config --global user.name "GitHub Actions"
           git config --global user.email "actions@github.com"
           git add ebay_tech_deals.csv
-          git commit -m "Updated Ebay data"
+          git commit -m "Updated Ebay data" || echo "No changes to commit" || true
           git push
