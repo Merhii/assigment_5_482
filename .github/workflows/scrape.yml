@@ -23,7 +23,7 @@ jobs:
 
 
       - name: Run Selenium scraper
-        run: python scraper.py
+        run: python main.py
 
       - name: Commit and Push updated CSV
         run: |
