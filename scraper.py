@@ -60,26 +60,29 @@ def scrape_ebay_data():
 
         try:
             name = item.find_element(By.XPATH,'.//span[contains(@itemprop,"name")]').text
-
+        except:
+            name="N/A"
+        try:
             price = item.find_element(By.XPATH, ".//span[contains(@itemprop,'price')]").text
-
-            try:
-                discounted = item.find_element(By.XPATH,".//span[contains(@class,'itemtile-price-strikethrough')]").text
-            except:
-                discounted = price
-
+        except:
+            price="N/A"
+        try:
+            discounted = item.find_element(By.XPATH,".//span[contains(@class,'itemtile-price-strikethrough')]").text
+        except:
+            discounted = price
+        try:
             url = item.find_element(By.XPATH, ".//div[contains(@class,'dne-itemtile-detail')]//a").get_attribute("href")
-
-            try:
-                shipping =item.find_element(By.XPATH, ".//span[contains(@class,'dne-itemtile-delivery')]").text
-            except:
+        except:
+            url="N/A"
+        try:
+            shipping =item.find_element(By.XPATH, ".//span[contains(@class,'dne-itemtile-delivery')]").text
+        except:
                 shipping="N/A"
 
-    #    //span[contains(@class,'dne-itemtile-delivery')]
-            timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
         
-            ebay_data = {
+        ebay_data = {
                 "timestamp": timestamp,
                 "price": price,
                 "original_price": discounted,
@@ -87,10 +90,7 @@ def scrape_ebay_data():
                 "shipping": shipping,
                 "item_url": url,
             }
-            all_data.append(ebay_data)
-        except Exception as e :
-            print("Error occurred:",e)
-            return None
+        all_data.append(ebay_data)
     return all_data
 
 
