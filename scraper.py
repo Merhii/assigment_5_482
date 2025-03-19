@@ -88,8 +88,8 @@ def scrape_ebay_data():
                 "item_url": url,
             }
             all_data.append(ebay_data)
-        except :
-            print("Error occurred:")
+        except Exception as e :
+            print("Error occurred:",e)
             return None
     return all_data
 
